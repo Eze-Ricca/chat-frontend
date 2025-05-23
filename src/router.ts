@@ -21,7 +21,7 @@ const routes: Route[] = [
 
 export function initRouter(rootEl: Element): void {
   function router(route: string): void {
-    const cleanRoute = route.replace("/wizzard-apx", "");
+    const cleanRoute = route.replace("/chat-frontend", "");
 
     if (cleanRoute === "/") {
       goTo("/home");
@@ -40,7 +40,7 @@ export function initRouter(rootEl: Element): void {
 
   // Función utilitaria que pasa a la vista seleccionada para poder navegar a otras rutas
   function goTo(uri: string): void {
-    const fullUri = "/wizzard-apx" + uri;
+    const fullUri = "/chat-frontend" + uri;
     history.pushState({}, "", fullUri);
     router(uri);
   }

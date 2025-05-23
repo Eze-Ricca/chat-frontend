@@ -11,7 +11,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
-export function chat(params: { goTo: (arg: string) => void }) {
+export function chat() {
   const divEl: HTMLDivElement = document.createElement("div");
   divEl.innerHTML = `
    <header-el></header-el>
@@ -185,12 +185,12 @@ export function chat(params: { goTo: (arg: string) => void }) {
 
     const inputMessage = divEl.querySelector(".input-mesagge") as ReusableInput;
 
-    // const botonHome = divEl.querySelector(".button");
-    // botonHome?.addEventListener("click", () => {
-    //   const inputMessageValue = inputMessage.getValue();
-    //   enviarMensaje("0dd78b2d-18f2-41b4-8f63-cd2e2095d6f9", inputMessageValue);
-    //   inputMessage.setValue("");
-    // });
+    const botonHome = divEl.querySelector(".button");
+    botonHome?.addEventListener("click", () => {
+      const inputMessageValue = inputMessage.getValue();
+      enviarMensaje("0dd78b2d-18f2-41b4-8f63-cd2e2095d6f9", inputMessageValue);
+      inputMessage.setValue("");
+    });
     inputMessage.addEventListener("keypress", (event) => {
       if (event.key === "Enter") {
         event.preventDefault();

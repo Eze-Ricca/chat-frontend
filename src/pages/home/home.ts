@@ -70,15 +70,17 @@ export function home(params: { goTo: (arg: string) => void }) {
     }
   `;
 
-  // const nameWizard = inputEl.getValue();
-  //   newState.nombre = nameWizard;
-  //   state.setState(newState);
-
+  async function activarRender() {
+    await fetch(
+      `https://chat-express-tgbm.onrender.com/chatroom/0dd78b2d-18f2-41b4-8f63-cd2e2095d6f9/messages`
+    );
+  }
+  activarRender();
   const inputEl = divEl.querySelector(".input-name") as ReusableInput;
   const buttonHome = divEl.querySelector(".button")!;
   const errorMessage: HTMLElement = divEl.querySelector(".error-message")!;
 
-  buttonHome.addEventListener("click", (event) => {
+  buttonHome.addEventListener("click", () => {
     const inputValue = inputEl.getValue().trim();
 
     const newState = state.getState();
