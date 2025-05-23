@@ -68,6 +68,21 @@ export function home(params: { goTo: (arg: string) => void }) {
         font-size: 16px;
         margin-top: 5px;
     }
+      @media (max-width: 768px) {
+        .container-btn-input {
+        width: 90%; /* Hacerlo más adaptable */
+      }
+      h2 {
+          font-size: 32px; /* Reducir el tamaño del título */
+      }
+      .button {
+          width: 100%; /* Que ocupe todo el ancho disponible */
+      }
+      .error-message {
+          font-size: 14px; /* Ajustar para pantallas más pequeñas */
+          padding: 8px;
+      }
+  }
   `;
 
   async function activarRender() {

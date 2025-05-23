@@ -18,24 +18,16 @@ export function chat() {
   <main class="main">
   <h2>Chat</h2>
   <ul class="container-messages">
-    <li>1</li>
-      <li>
-      <div class="container-mesagge">
-      <p class="name-message"><em>Eze</em></p>
-      <p class="container-mesagge-msg">Hola como estas?</p>
-      <p class="hour-message"><em>17.00</em></p>
-    </div>
-      </li>
-      <li>3</li>     
+       
   </ul>
   <form class="form">
       <reusable-input
         class="input-mesagge"        
         size-label="30px" required></reusable-input>
-    <span class="error-message"></span>
+    
       <reusable-button
         class="button"
-        label="Comenzar"
+        label="Enviar"
         text-color="fff"
         border-color="none"
         hover-bg-color="#88afeb"
@@ -110,6 +102,46 @@ export function chat() {
     .hour-message {
         text-align: end;
     }
+        
+    @media (max-width: 768px) {
+      .app {
+          max-width: 100%;
+          padding: 10px;
+      }
+      .main {
+          max-width: 100%;
+          min-height: auto;
+          padding: 10px;
+      }
+      h2 {
+          font-size: 32px;
+      }
+      .container-messages {
+          max-height: 57vh; 
+          padding: 5px;
+      }
+      .container-mesagge-msg {
+          font-size: 14px;
+          padding: 8px;
+      }
+      .form {
+        display: flex;
+        flex-direction: column;     
+        width: 100%;
+        padding: 0 10px;
+    }
+    .input-mesagge {
+        width: 100%; /* Asegurar que ocupe todo el ancho */
+    }
+    .button {
+        width: 100%; /* Que el botón también se ajuste */
+        margin-top: 5px; /* Espaciado mínimo */
+    }
+      .error-message {
+          font-size: 14px;
+          padding: 8px;
+      }
+  }
     `;
 
   // Funcion para enviar mensaje
