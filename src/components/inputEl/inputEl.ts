@@ -58,6 +58,9 @@ export class ReusableInput extends HTMLElement {
   getValue() {
     return this.inputElement.value;
   }
+  setValue(newValue: string) {
+    this.inputElement.value = newValue;
+  }
 }
 
 customElements.define("reusable-input", ReusableInput);

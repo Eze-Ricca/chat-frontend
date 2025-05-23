@@ -116,13 +116,13 @@ export function chat(params: { goTo: (arg: string) => void }) {
   async function enviarMensaje(chatroomId: string, mensaje: string) {
     const authorName = state.data.nombre;
     const respuesta = await fetch(
-      `http://localhost:3000/chatroom/${chatroomId}/messages`,
+      `https://chat-express-tgbm.onrender.com/chatroom/${chatroomId}/messages`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           text: mensaje,
-          author: authorName, // Aquí podrías poner el usuario que envió el mensaje
+          author: authorName, // Aquí va el usuario que envia el mensaje, este lo tengo en el state
         }),
       }
     );
@@ -185,14 +185,28 @@ export function chat(params: { goTo: (arg: string) => void }) {
 
     const inputMessage = divEl.querySelector(".input-mesagge") as ReusableInput;
 
-    const botonHome = divEl.querySelector(".button");
-    botonHome?.addEventListener("click", () => {
-      const inputMessageValue = inputMessage.getValue();
-      enviarMensaje("0dd78b2d-18f2-41b4-8f63-cd2e2095d6f9", inputMessageValue);
+    // const botonHome = divEl.querySelector(".button");
+    // botonHome?.addEventListener("click", () => {
+    //   const inputMessageValue = inputMessage.getValue();
+    //   enviarMensaje("0dd78b2d-18f2-41b4-8f63-cd2e2095d6f9", inputMessageValue);
+    //   inputMessage.setValue("");
+    // });
+    inputMessage.addEventListener("keypress", (event) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+
+        const inputMessageValue = inputMessage.getValue();
+        enviarMensaje(
+          "0dd78b2d-18f2-41b4-8f63-cd2e2095d6f9",
+          inputMessageValue
+        );
+
+        // Limpia el input después de enviar el mensaje
+        inputMessage.setValue("");
+      }
     });
   })();
 
   divEl.appendChild(styles);
   return divEl;
 }
-// params.goTo("/home");
